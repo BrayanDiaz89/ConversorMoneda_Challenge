@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 
 public class ConsultaMoneda {
 
-    public Moneda buscaMoneda(String symbolMoney){
+    public Double buscaMoneda(String symbolMoney){
         String id = "f5aa9b60515f40329cb019cc7ec7c278";
         URI direccion = URI.create("https://openexchangerates.org/api/latest.json?app_id="+id+"&symbols="+symbolMoney);
 
@@ -19,9 +19,15 @@ public class ConsultaMoneda {
             HttpResponse<String> response = null;
             response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-            return new Gson().fromJson(response.body(), Moneda.class);
+            Moneda moneda = new Gson().fromJson(response.body(), Moneda.class);
+            //Obtener el valor de la tasa de cambio
+            Double tasaCambio = moneda.rates().get(symbolMoney.toUpperCase());
+            if (tasaCambio == null){
+                throw new RuntimeException("No se encontró la tasa de cambio para " + symbolMoney);
+            }
+            return tasaCambio; //Devuelve la tasa de Cambio
         } catch (Exception e){
-            throw new RuntimeException("No encontré esa moneda.");
+            throw new RuntimeException("Error al obtener la tasa de cambio.");
         }
     }
 
