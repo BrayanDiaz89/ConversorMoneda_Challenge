@@ -1,3 +1,5 @@
-public record Moneda(double rates) {
+import java.util.Map;
+
+public record Moneda(Map<String, Double> rates) {
 
 }
