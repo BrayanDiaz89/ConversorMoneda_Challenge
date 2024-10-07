@@ -6,5 +6,4 @@ public class ConvertirMoneda {
     public double convertirMonedaADolar(double moneda, double tasaCambio){
         return moneda / tasaCambio;
     }
-
 }

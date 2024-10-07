@@ -5,15 +5,6 @@ public class Principal {
 
         Scanner teclado = new Scanner(System.in);
         /*
-        System.out.println("Digite la tasa de cambio de dólar a COP: ");
-        double tasaCambio = teclado.nextDouble();
-
-
-
-
-
-        ////////////////////////////
-
         System.out.println("Digite la cantidad de pesos a convertir USD: ");
         double pesosCant = teclado.nextDouble();
 
@@ -22,17 +13,41 @@ public class Principal {
 
         System.out.println("Resultado: "+ String.format("%.2f",convirtiendo) + "$ USD");
         */
-        ConsultaMoneda consulta = new ConsultaMoneda();
-        System.out.println("Qué moneda deseas consultar, su tasa de cambio?: ");
-        String symbolMoney = teclado.nextLine();
-        Double tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-        System.out.println("Tasa de cambio: "+symbolMoney+" = "+tasaDeCambio);
-        System.out.println("°!°!°!°!°°!°!°!°!°!°!°!°!°!°!°!°!°!°!°!°!°!°!°!◙ê↔°°°°");
-        System.out.println("Digite la cantidad de dólares a convertir a COP: ");
-        double cantidadCop = teclado.nextDouble();
-        ConvertirMoneda conversor = new ConvertirMoneda();
-        double conversion = conversor.conversionDolarAMoneda(cantidadCop,tasaDeCambio);
-        System.out.println("Resultado: "+ String.format("%.2f",conversion) + "$ Pesos colombianos");
 
+        MenuContinentes menuCont = new MenuContinentes();
+        System.out.println("¡Un gusto tenerte por aquí!, ¡Bienvenido a tú conversor de moneda!");
+        String menu = "    |=!=!=| Menú principal: |=!=!| \n"+
+                "¿De qué parte del mundo deseas consultar la conversión?\n"+
+                "1) Norteamérica\n"+
+                "2) Centroamérica\n"+
+                "3) Sudamérica\n"+
+                "4) El Caribe\n"+
+                "5) Europa \n"+
+                "6) Salir.";
+        int decision = 0;
+        while(decision != 6){
+            System.out.println(menu);
+            decision = teclado.nextInt();
+
+            switch (decision){
+                case 1:
+                    menuCont.menuNorteamerica();
+                    break;
+                case 2:
+                    menuCont.menuCentroamerica();
+                case 3:
+                    System.out.println("dsdf");
+                case 4:
+                    System.out.println("ddf");
+                case 5:
+                    System.out.println("fsdfs");
+                case 6:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción no válida, por favor intenta nuevamente.");
+            }
+        }
     }
 }
+
