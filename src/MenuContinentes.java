@@ -177,41 +177,143 @@ public class MenuContinentes {
     }
 
     public void menuSudamerica() {
-        String norteamerica = "Estás en norteamérica:  \n" +
+        String sudamerica = "Estás en Sudamérica:  \n" +
                 "¿Qué operación deseas realizar?\n" +
-                "1) (Canadá-cad) Convertir dólares canadienses a dólares estadounidenses.\n" +
-                "2) (Canadá-cad) Convertir dólares estadounidenses a dólares canadienses .\n" +
-                "3) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "4) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "5) Volver al menú principal.\n";
+                "1) (Colombia-cop) Convertir pesos colombianos a dólares estadounidenses.\n" +
+                "2) (Colombia-cop) Convertir dólares estadounidenses a pesos colombianos.\n" +
+                "3) (Venezuela-ves) Convertir Bolívares a dólares estadounidenses.\n" +
+                "4) (Venezuela-ves) Convertir dólares estadounidenses a Bolívares.\n" +
+                "5) (Peru-pen) Convertir Soles Peruanos a dólares estadounidenses.\n" +
+                "6) (Peru-pen) Convertir dólares estadounidenses a Soles Peruanos.\n" +
+                "7) (Bolivia-bob) Convertir Bolivianos a dólares estadounidenses.\n" +
+                "8) (Bolivia-bob) Convertir dólares estadounidenses a Bolivianos.\n" +
+                "9) (Paraguay-pyg) Convertir Guaraníes a dólares estadounidenses.\n" +
+                "10) (Paraguay-pyg) Convertir dólares estadounidenses a Guaraníes.\n" +
+                "11) (Uruguay-uyu) Convertir Pesos Uruguayos a dólares estadounidenses.\n" +
+                "12) (Uruguay-uyu) Convertir dólares estadounidenses a Pesos Uruguayos.\n" +
+                "13) (Chile-clp) Convertir Pesos Chilenos a dólares estadounidenses.\n" +
+                "14) (Chile-clp) Convertir dólares estadounidenses a Pesos Chilenos.\n" +
+                "15) Volver al menú principal.\n";
 
         int decisionUser = 0;
 
         while (decisionUser != 5) {
-            System.out.println(norteamerica);
+            System.out.println(sudamerica);
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
                 case 1:
-                    System.out.println("Digite la cantidad de dólares canadienses a convertir a (USD): ");
+                    symbolMoney = "COP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de pesos colombianos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
                     break;
                 case 2:
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CAD): ");
+                    symbolMoney = "COP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (COP): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" COP");
                     break;
                 case 3:
-                    System.out.println("Digite la cantidad de pesos mexicanos a convertir a (USD): ");
+                    symbolMoney = "VES";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de Bolívares a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
                     break;
                 case 4:
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
+                    symbolMoney = "VES";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (VES): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" VES");
                     break;
                 case 5:
+                    symbolMoney = "PEN";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de soles peruanos a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 6:
+                    symbolMoney = "PEN";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PEN): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" PEN");
+                    break;
+                case 7:
+                    symbolMoney = "BOB";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de bolivianos a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 8:
+                    symbolMoney = "BOB";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (BOB): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" BOB");
+                    break;
+                case 9:
+                    symbolMoney = "PYG";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de guaraníes a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 10:
+                    symbolMoney = "PYG";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PYG): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" PYG");
+                    break;
+                case 11:
+                    symbolMoney = "UYU";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de pesos uruguayos a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 12:
+                    symbolMoney = "UYU";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UYU): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" UYU");
+                    break;
+                case 13:
+                    symbolMoney = "CLP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de pesos chilenos a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 14:
+                    symbolMoney = "CLP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CLP): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CLP");
+                    break;
+                case 15:
                     System.out.println("Regresando al menú principal...");
                     break;
                 default:
@@ -222,41 +324,89 @@ public class MenuContinentes {
     }
 
     public void menuCaribe() {
-        String norteamerica = "Estás en norteamérica:  \n" +
+        String caribe = "Estás en el Caribe:  \n" +
                 "¿Qué operación deseas realizar?\n" +
-                "1) (Canadá-cad) Convertir dólares canadienses a dólares estadounidenses.\n" +
-                "2) (Canadá-cad) Convertir dólares estadounidenses a dólares canadienses .\n" +
-                "3) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "4) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "5) Volver al menú principal.\n";
+                "1) (Cuba-cup) Convertir Pesos Cubanos a dólares estadounidenses.\n" +
+                "2) (Cuba-cup) Convertir dólares estadounidenses a Pesos Cubanos.\n" +
+                "3) (República Dominicana-dop) Convertir Pesos Dominicanos a dólares estadounidenses.\n" +
+                "4) (República Dominicana-dop) Convertir dólares estadounidenses a Pesos Dominicanos.\n" +
+                "5) (Haití-htg) Convertir Gourdes a dólares estadounidenses.\n" +
+                "6) (Haití-htg) Convertir dólares estadounidenses a Gourdes.\n" +
+                "7) (Jamaica-jmd) Convertir Dólares Jamaiquinos a dólares estadounidenses.\n" +
+                "8) (Jamaica-jmd) Convertir dólares estadounidenses a Dólares Jamaiquinos.\n" +
+                "9) Volver al menú principal.\n";
 
         int decisionUser = 0;
 
         while (decisionUser != 5) {
-            System.out.println(norteamerica);
+            System.out.println(caribe);
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
                 case 1:
-                    System.out.println("Digite la cantidad de dólares canadienses a convertir a (USD): ");
+                    symbolMoney = "CUP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de pesos cubanos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
                     break;
                 case 2:
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CAD): ");
+                    symbolMoney = "CUP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CUP): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CUP");
                     break;
                 case 3:
-                    System.out.println("Digite la cantidad de pesos mexicanos a convertir a (USD): ");
+                    symbolMoney = "DOP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de pesos dominicanos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
                     break;
                 case 4:
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
+                    symbolMoney = "DOP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (DOP): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" DOP");
                     break;
                 case 5:
+                    symbolMoney = "HTG";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de gourdes a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 6:
+                    symbolMoney = "HTG";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HTG): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" HTG");
+                    break;
+                case 7:
+                    symbolMoney = "JMD";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares jamaiquinos a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 8:
+                    symbolMoney = "JMD";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (JMD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" JMD");
+                    break;
+                case 9:
                     System.out.println("Regresando al menú principal...");
                     break;
                 default:
@@ -267,18 +417,29 @@ public class MenuContinentes {
     }
 
     public void menuEuropa() {
-        String norteamerica = "Estás en norteamérica:  \n" +
+        String europa = "Estás en norteamérica:  \n" +
                 "¿Qué operación deseas realizar?\n" +
-                "1) (Canadá-cad) Convertir dólares canadienses a dólares estadounidenses.\n" +
-                "2) (Canadá-cad) Convertir dólares estadounidenses a dólares canadienses .\n" +
-                "3) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "4) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "5) Volver al menú principal.\n";
+                "1) Deseas cónocer: ¿Qué países utilizan de moneda el Euro?.\n" +
+                "2) (Países con moneda Euro) Convertir Euros a dólares estadounidenses.\n" +
+                "3) (Países con moneda Euro) Convertir dólares estadounidenses a Euros.\n" +
+                "4) (Reino Unido-gbp) Convertir Libras Esterlinas a dólares estadounidenses.\n" +
+                "5) (Reino Unido-gbp) Convertir dólares estadounidenses a Libras Esterlinas.\n" +
+                "6) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
+                "7) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
+                "8) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
+                "9) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
+                "10) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
+                "11) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
+                "12) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
+                "13) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
+                "14) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
+                "15) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
+                "16) Volver al menú principal.\n";
 
         int decisionUser = 0;
 
         while (decisionUser != 5) {
-            System.out.println(norteamerica);
+            System.out.println(europa);
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
                 case 1:

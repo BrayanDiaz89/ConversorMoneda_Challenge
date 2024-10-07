@@ -36,9 +36,9 @@ public class Principal {
                 case 2:
                     menuCont.menuCentroamerica();
                 case 3:
-                    System.out.println("dsdf");
+                    menuCont.menuSudamerica();
                 case 4:
-                    System.out.println("ddf");
+                    menuCont.menuCaribe();
                 case 5:
                     System.out.println("fsdfs");
                 case 6:
