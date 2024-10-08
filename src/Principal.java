@@ -1,9 +1,10 @@
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) throws IOException {
-
+        String respuesta = "0";
         Scanner teclado = new Scanner(System.in);
         MenuContinentes menuCont = new MenuContinentes();
         GeneradorDeArchivo generador = new GeneradorDeArchivo();
@@ -42,9 +43,24 @@ public class Principal {
                     System.out.println(menuCont.getHistorial());
                     break;
                 case 7:
-                    System.out.println("Saliendo del programa...");
-                    generador.guardarJson(menuCont);
-                    break;
+                    //while(true){
+                        System.out.println("¿Deseas generar un archivo JSON con tú historial de conversiones realizadas? 1=SI / 2=NO");
+                        respuesta = teclado.nextLine();
+                        if (respuesta.isEmpty()) {
+                            System.out.println("No ingresaste ningún valor.");
+                        }
+                        if (respuesta == "1"){
+                            System.out.println("Generando archivo JSON...");
+                            System.out.println("Saliendo del programa.");
+                            generador.guardarJson(menuCont);
+                            break;
+                        } else if (respuesta == "2"){
+                                System.out.println("Saliendo del programa...");
+                            break;
+                        } else{
+                                System.out.println("Valor ingresado no válido, intente nuevamente.");
+                                break;
+                        }
                 default:
                     System.out.println("Opción no válida, por favor intenta nuevamente.");
                     break;
