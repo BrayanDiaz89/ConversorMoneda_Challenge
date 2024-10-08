@@ -124,7 +124,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de quetzales a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"quetzales",conversion);
                     break;
                 case 2:
                     symbolMoney = "GTQ";
@@ -132,7 +132,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GTQ): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" GTQ");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"quetzales");
                     break;
                 case 3:
                     symbolMoney = "HNL";
@@ -140,7 +140,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de Lempiras a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"lempiras",conversion);
                     break;
                 case 4:
                     symbolMoney = "HNL";
@@ -148,7 +148,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HNL): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" HNL");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"lempiras");
                     break;
                 case 5:
                     symbolMoney = "NIO";
@@ -156,7 +156,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de Córdobas Nicaguarenses a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"córdobas nicaguarenses",conversion);
                     break;
                 case 6:
                     symbolMoney = "NIO";
@@ -164,7 +164,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NIO): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" NIO");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"córdobas nicaguarenses");
                     break;
                 case 7:
                     symbolMoney = "CRC";
@@ -172,7 +172,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de Colones Costaricenses a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"colones costaricenses",conversion);
                     break;
                 case 8:
                     symbolMoney = "CRC";
@@ -180,7 +180,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CRC): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CRC");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"colones costaricenses");
                     break;
                 case 9:
                     System.out.println("Regresando al menú principal...");
@@ -223,7 +223,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de pesos colombianos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"pesos colombianos",conversion);
                     break;
                 case 2:
                     symbolMoney = "COP";
@@ -231,7 +231,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (COP): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" COP");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos colombianos");
                     break;
                 case 3:
                     symbolMoney = "VES";
@@ -239,7 +239,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de Bolívares a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"bolivares",conversion);
                     break;
                 case 4:
                     symbolMoney = "VES";
@@ -247,7 +247,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (VES): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" VES");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"bolivares");
                     break;
                 case 5:
                     symbolMoney = "PEN";
@@ -255,7 +255,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de soles peruanos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"soles peruanos",conversion);
                     break;
                 case 6:
                     symbolMoney = "PEN";
@@ -263,7 +263,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PEN): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" PEN");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"soles peruanos");
                     break;
                 case 7:
                     symbolMoney = "BOB";
@@ -271,7 +271,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de bolivianos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"bolivianos", conversion);
                     break;
                 case 8:
                     symbolMoney = "BOB";
@@ -279,7 +279,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (BOB): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" BOB");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"bolivianos");
                     break;
                 case 9:
                     symbolMoney = "PYG";
@@ -287,7 +287,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de guaraníes a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"guaraníes",conversion);
                     break;
                 case 10:
                     symbolMoney = "PYG";
@@ -295,7 +295,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PYG): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" PYG");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"guaraníes");
                     break;
                 case 11:
                     symbolMoney = "UYU";
@@ -303,7 +303,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de pesos uruguayos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"pesos uruguayos", conversion);
                     break;
                 case 12:
                     symbolMoney = "UYU";
@@ -311,7 +311,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UYU): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" UYU");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos uruguayos");
                     break;
                 case 13:
                     symbolMoney = "CLP";
@@ -319,7 +319,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de pesos chilenos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"pesos chilenos",conversion);
                     break;
                 case 14:
                     symbolMoney = "CLP";
@@ -327,7 +327,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CLP): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CLP");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos chilenos");
                     break;
                 case 15:
                     System.out.println("Regresando al menú principal...");
@@ -364,7 +364,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de pesos cubanos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"pesos cubanos",conversion);
                     break;
                 case 2:
                     symbolMoney = "CUP";
@@ -372,7 +372,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CUP): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CUP");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos cubanos");
                     break;
                 case 3:
                     symbolMoney = "DOP";
@@ -380,7 +380,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de pesos dominicanos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"pesos dominicanos",conversion);
                     break;
                 case 4:
                     symbolMoney = "DOP";
@@ -388,7 +388,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (DOP): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" DOP");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos dominicanos");
                     break;
                 case 5:
                     symbolMoney = "HTG";
@@ -396,7 +396,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de gourdes a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"gourdes",conversion);
                     break;
                 case 6:
                     symbolMoney = "HTG";
@@ -404,7 +404,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HTG): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" HTG");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"gourdes");
                     break;
                 case 7:
                     symbolMoney = "JMD";
@@ -412,7 +412,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares jamaiquinos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"dólares jamaiquinos",conversion);
                     break;
                 case 8:
                     symbolMoney = "JMD";
@@ -420,7 +420,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (JMD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" JMD");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"dólares jamaiquinos");
                     break;
                 case 9:
                     System.out.println("Regresando al menú principal...");
@@ -475,7 +475,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de Euros a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"Euros",conversion);
                     break;
                 case 3:
                     symbolMoney = "EUR";
@@ -483,7 +483,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (EUR): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" EUR");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"Euros");
                     break;
                 case 4:
                     symbolMoney = "GBP";
@@ -491,7 +491,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de libras esterlinas a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"libras esterlinas",conversion);
                     break;
                 case 5:
                     symbolMoney = "GBP";
@@ -499,7 +499,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GBP): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" GBP");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"libras esterlinas");
                     break;
                 case 6:
                     symbolMoney = "CHF";
@@ -507,7 +507,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de francos suizos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"francos suizos",conversion);
                     break;
                 case 7:
                     symbolMoney = "CHF";
@@ -515,7 +515,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CHF): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CHF");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"francos suizos");
                     break;
                 case 8:
                     symbolMoney = "NOK";
@@ -523,7 +523,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de coronas noruegas a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"coronas noruegas",conversion);
                     break;
                 case 9:
                     symbolMoney = "NOK";
@@ -531,7 +531,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NOK): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" NOK");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"coronas noruegas");
                     break;
                 case 10:
                     symbolMoney = "UAH";
@@ -539,7 +539,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de grivnas a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"grivnas",conversion);
                     break;
                 case 11:
                     symbolMoney = "UAH";
@@ -547,7 +547,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UAH): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" UAH");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"grivnas");
                     break;
                 case 12:
                     symbolMoney = "ISK";
@@ -555,7 +555,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de coronas irlandesas a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"coronas irlandesas",conversion);
                     break;
                 case 13:
                     symbolMoney = "ISK";
@@ -563,7 +563,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (ISK): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" ISK");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"coronas irlandesas");
                     break;
                 case 14:
                     symbolMoney = "RSD";
@@ -571,7 +571,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dinares serbios a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"dinares serbios",conversion);
                     break;
                 case 15:
                     symbolMoney = "RSD";
@@ -579,7 +579,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (RSD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" RSD");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"dinares serbios");
                     break;
                 case 16:
                     System.out.println("Regresando al menú principal...");
