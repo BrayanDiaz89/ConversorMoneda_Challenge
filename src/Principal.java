@@ -1,11 +1,12 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Scanner teclado = new Scanner(System.in);
-
         MenuContinentes menuCont = new MenuContinentes();
+        GeneradorDeArchivo generador = new GeneradorDeArchivo();
         System.out.println("¡Un gusto tenerte por aquí!, ¡Bienvenido a tú conversor de moneda!");
         String menu = "    |=!=!=| Menú principal: |=!=!| \n"+
                 "¿De qué parte del mundo deseas consultar la conversión?\n"+
@@ -14,9 +15,10 @@ public class Principal {
                 "3) Sudamérica\n"+
                 "4) El Caribe\n"+
                 "5) Europa \n"+
-                "6) Salir.";
+                "6) Ver historial de conversiones \n"+
+                "7) Salir.";
         int decision = 0;
-        while(decision != 6){
+        while(decision != 7){
             System.out.println(menu);
             decision = teclado.nextInt();
 
@@ -37,7 +39,11 @@ public class Principal {
                     menuCont.menuEuropa();
                     break;
                 case 6:
+                    System.out.println(menuCont.getHistorial());
+                    break;
+                case 7:
                     System.out.println("Saliendo del programa...");
+                    generador.guardarJson(menuCont);
                     break;
                 default:
                     System.out.println("Opción no válida, por favor intenta nuevamente.");

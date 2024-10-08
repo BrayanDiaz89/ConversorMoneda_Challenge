@@ -1,17 +1,31 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class MenuContinentes {
     private Scanner teclado = new Scanner(System.in);
     ConsultaMoneda consulta = new ConsultaMoneda();
-    private double cantidadMoneyUser;
+    private Double cantidadMoneyUser;
     private String symbolMoney;
     private Double conversion;
+    private String resultado;
     Double tasaDeCambio;
+    private List<String> historial = new ArrayList<>();
+
+    public List<String> getHistorial() {
+        return historial;
+    }
 
     ConvertirMoneda conversor = new ConvertirMoneda();
 
+    public void mensajeResultadoUsd(double cantidadMoneyUser, String nombreMoneda, double conversion){
+        this.resultado ="La cantidad "+"("+cantidadMoneyUser+") "+nombreMoneda+" son: "+String.format("%.2f",conversion) +" USD";
+        historial.add(resultado);
+        System.out.println(resultado);
+    }
+    public void mensajeResultadoMoneda(double cantidadMoneyUser,  double conversion, String nombreMoneda){
+        this.resultado ="La cantidad "+"("+cantidadMoneyUser+") "+"USD"+" son: "+String.format("%.2f",conversion)+" "+nombreMoneda;
+        historial.add(resultado);
+        System.out.println(resultado);
+    }
 
     public String getSymbolMoney() {
         return symbolMoney;
@@ -49,7 +63,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares canadienses a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"dólares canadienses",conversion);
                     break;
                 case 2:
                     symbolMoney = "CAD";
@@ -57,7 +71,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CAD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" (CAD).");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"dólares canadienses");
                     break;
                 case 3:
                     symbolMoney = "MXN";
@@ -65,7 +79,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de pesos mexicanos a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    mensajeResultadoUsd(cantidadMoneyUser,"pesos mexicanos",conversion);
                     break;
                 case 4:
                     symbolMoney = "MXN";
@@ -73,7 +87,7 @@ public class MenuContinentes {
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
                     cantidadMoneyUser = teclado.nextDouble();
                     conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" (MXN)");
+                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos mexicanos");
                     break;
                 case 5:
                     System.out.println("Regresando al menú principal...");
