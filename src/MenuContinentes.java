@@ -424,16 +424,16 @@ public class MenuContinentes {
                 "3) (Países con moneda Euro) Convertir dólares estadounidenses a Euros.\n" +
                 "4) (Reino Unido-gbp) Convertir Libras Esterlinas a dólares estadounidenses.\n" +
                 "5) (Reino Unido-gbp) Convertir dólares estadounidenses a Libras Esterlinas.\n" +
-                "6) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "7) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "8) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "9) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "10) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "11) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "12) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "13) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
-                "14) (México-mxn) Convertir pesos mexicanos a dólares estadounidenses.\n" +
-                "15) (México-mxn) Convertir dólares estadounidenses a pesos mexicanos.\n" +
+                "6) (Suiza-chf) Convertir Francos Suizos a dólares estadounidenses.\n" +
+                "7) (Suiza-chf) Convertir dólares estadounidenses a Francos Suizos.\n" +
+                "8) (Noruega-nok) Convertir Coronas Noruegas a dólares estadounidenses.\n" +
+                "9) (Noruega-nok) Convertir dólares estadounidenses a Coronas Noruegas.\n" +
+                "10) (Ucrania-uah) Convertir Grivnas a dólares estadounidenses.\n" +
+                "11) (Ucrania-uah) Convertir dólares estadounidenses a Grivnas.\n" +
+                "12) (Islandia-isk) Convertir Coronas Irlandesas a dólares estadounidenses.\n" +
+                "13) (Islandia-isk) Convertir dólares estadounidenses a Coronas Irlandesas.\n" +
+                "14) (Serbia-rsd) Convertir Dinares Serbios a dólares estadounidenses.\n" +
+                "15) (Serbia-rsd) Convertir dólares estadounidenses a Dinares Serbios.\n" +
                 "16) Volver al menú principal.\n";
 
         int decisionUser = 0;
@@ -443,19 +443,25 @@ public class MenuContinentes {
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
                 case 1:
-                    System.out.println("Digite la cantidad de dólares canadienses a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
+                    String paisesConEuro = "Lista de países que utilizan el Euro como moneda Nacional: \n"+
+                                           "| Alemania | - | Francia | - | España | - | Italia | - | Portugal | -\n";
                     System.out.println("Su resultado es...");
                     break;
                 case 2:
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CAD): ");
+                    symbolMoney = "EUR";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de Euros a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
                     break;
                 case 3:
-                    System.out.println("Digite la cantidad de pesos mexicanos a convertir a (USD): ");
+                    symbolMoney = "EUR";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (EUR): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" EUR");
                     break;
                 case 4:
                     System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
