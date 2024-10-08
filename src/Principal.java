@@ -4,15 +4,6 @@ public class Principal {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        /*
-        System.out.println("Digite la cantidad de pesos a convertir USD: ");
-        double pesosCant = teclado.nextDouble();
-
-        ConvertirMoneda convertir = new ConvertirMoneda();
-        double convirtiendo = convertir.convertirMonedaADolar(pesosCant,tasaCambio);
-
-        System.out.println("Resultado: "+ String.format("%.2f",convirtiendo) + "$ USD");
-        */
 
         MenuContinentes menuCont = new MenuContinentes();
         System.out.println("¡Un gusto tenerte por aquí!, ¡Bienvenido a tú conversor de moneda!");
@@ -35,17 +26,22 @@ public class Principal {
                     break;
                 case 2:
                     menuCont.menuCentroamerica();
+                    break;
                 case 3:
                     menuCont.menuSudamerica();
+                    break;
                 case 4:
                     menuCont.menuCaribe();
+                    break;
                 case 5:
-                    System.out.println("fsdfs");
+                    menuCont.menuEuropa();
+                    break;
                 case 6:
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opción no válida, por favor intenta nuevamente.");
+                    break;
             }
         }
     }

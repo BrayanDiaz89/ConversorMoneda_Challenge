@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MenuContinentes {
@@ -197,7 +199,7 @@ public class MenuContinentes {
 
         int decisionUser = 0;
 
-        while (decisionUser != 5) {
+        while (decisionUser != 15) {
             System.out.println(sudamerica);
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
@@ -338,7 +340,7 @@ public class MenuContinentes {
 
         int decisionUser = 0;
 
-        while (decisionUser != 5) {
+        while (decisionUser != 9) {
             System.out.println(caribe);
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
@@ -417,7 +419,7 @@ public class MenuContinentes {
     }
 
     public void menuEuropa() {
-        String europa = "Estás en norteamérica:  \n" +
+        String europa = "Estás en Europa:  \n" +
                 "¿Qué operación deseas realizar?\n" +
                 "1) Deseas cónocer: ¿Qué países utilizan de moneda el Euro?.\n" +
                 "2) (Países con moneda Euro) Convertir Euros a dólares estadounidenses.\n" +
@@ -438,14 +440,20 @@ public class MenuContinentes {
 
         int decisionUser = 0;
 
-        while (decisionUser != 5) {
+        while (decisionUser != 16) {
             System.out.println(europa);
             decisionUser = teclado.nextInt();
             switch (decisionUser) {
                 case 1:
-                    String paisesConEuro = "Lista de países que utilizan el Euro como moneda Nacional: \n"+
-                                           "| Alemania | - | Francia | - | España | - | Italia | - | Portugal | -\n";
-                    System.out.println("Su resultado es...");
+                    ArrayList<String> paisesEuro = new ArrayList<>();
+                    Collections.addAll(paisesEuro, "Alemania","Francia","España","Italia","Portugal",
+                                                "Bélgica","Países Bajos","Austria","Finlandia","Irlanda","Luxemburgo",
+                                                "Grecia","Eslovaquia","Eslovenia","Estonia","Letonia","Lituania","Chipre","Malta");
+                    Collections.sort(paisesEuro);
+                    System.out.println("Los países europeos que utilizan la moneda (Euro) son:");
+                    for(String pais : paisesEuro){
+                        System.out.println(pais);
+                    }
                     break;
                 case 2:
                     symbolMoney = "EUR";
@@ -464,11 +472,102 @@ public class MenuContinentes {
                     System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" EUR");
                     break;
                 case 4:
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
+                    symbolMoney = "GBP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de libras esterlinas a convertir a (USD): ");
                     cantidadMoneyUser = teclado.nextDouble();
-                    System.out.println("Su resultado es...");
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
                     break;
                 case 5:
+                    symbolMoney = "GBP";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GBP): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" GBP");
+                    break;
+                case 6:
+                    symbolMoney = "CHF";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de francos suizos a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 7:
+                    symbolMoney = "CHF";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CHF): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" CHF");
+                    break;
+                case 8:
+                    symbolMoney = "NOK";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de coronas noruegas a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 9:
+                    symbolMoney = "NOK";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NOK): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" NOK");
+                    break;
+                case 10:
+                    symbolMoney = "UAH";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de grivnas a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 11:
+                    symbolMoney = "UAH";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UAH): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" UAH");
+                    break;
+                case 12:
+                    symbolMoney = "ISK";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de coronas irlandesas a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 13:
+                    symbolMoney = "ISK";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (ISK): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" ISK");
+                    break;
+                case 14:
+                    symbolMoney = "RSD";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dinares serbios a convertir a (USD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" USD");
+                    break;
+                case 15:
+                    symbolMoney = "RSD";
+                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (RSD): ");
+                    cantidadMoneyUser = teclado.nextDouble();
+                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
+                    System.out.println("Resultado de conversión: "+String.format("%.2f",conversion) +" RSD");
+                    break;
+                case 16:
                     System.out.println("Regresando al menú principal...");
                     break;
                 default:
