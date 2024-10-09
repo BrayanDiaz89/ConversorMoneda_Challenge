@@ -49,28 +49,33 @@ public class Principal {
                     case 7:
                         String mensaje = "¿Deseas generar un archivo JSON con tú historial de conversiones realizadas? 1=SI / 2=NO";
                         int respuesta;
-                        while (true) {
-                            System.out.println(mensaje);
-                            try {
-                                respuesta = teclado.nextInt();
-                                if (respuesta == 1) {
-                                    generador.guardarJson(menuCont);
-                                    System.out.println("Generando archivo JSON...");
+                            while (true) {
+                                System.out.println(mensaje);
+                                try {
+                                    respuesta = teclado.nextInt();
+                                    if (respuesta == 1) {
+                                        if (!menuCont.getHistorial().isEmpty()) {
+                                            generador.guardarJson(menuCont);
+                                            System.out.println("Generando archivo JSON...");
+                                            System.out.println("Saliendo del programa.");
+                                            break;
+                                        }
+                                        System.out.println("Historial vacío, no es posible generar un archivo sin datos.");
+                                        System.out.println("Saliendo del programa.");
+                                        break;
+                                    } else if (respuesta == 2) {
+                                        System.out.println("Gracias por tú actividad.");
+                                        System.out.println("Saliendo del programa.");
+                                        break;
+                                    }
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Entrada no válida. Por favor, ingresa un número (1=SI, 2=NO).");
+                                    teclado.nextLine();
+                                } catch (Exception e) {
+                                    System.out.println("Ocurrió un error inesperado.");
                                     System.out.println("Saliendo del programa.");
-                                    break;
-                                } else if (respuesta == 2) {
-                                    System.out.println("Gracias por tú actividad.");
-                                    System.out.println("Saliendo del programa.");
-                                    break;
                                 }
-                            } catch (InputMismatchException e) {
-                                System.out.println("Entrada no válida. Por favor, ingresa un número (1=SI, 2=NO).");
-                                teclado.nextLine();
-                            } catch (Exception e) {
-                                System.out.println("Ocurrió un error inesperado.");
-                                System.out.println("Saliendo del programa.");
                             }
-                        }
                         break;
                     default:
                         System.out.println("Opción no válida, por favor intenta nuevamente.");
