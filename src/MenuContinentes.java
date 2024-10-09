@@ -7,11 +7,15 @@ public class MenuContinentes {
     private String symbolMoney;
     private Double conversion;
     private String resultado;
-    Double tasaDeCambio;
+    private Double tasaDeCambio;
     private List<String> historial = new ArrayList<>();
 
     public List<String> getHistorial() {
-        return historial;
+        List<String> historialFormateado = new ArrayList<>();
+        for (int i = 0; i < historial.size(); i++){
+            historialFormateado.add("Consulta "+(i+1)+": "+ historial.get(i));
+        }
+        return historialFormateado;
     }
 
     ConvertirMoneda conversor = new ConvertirMoneda();
@@ -35,8 +39,6 @@ public class MenuContinentes {
         this.symbolMoney = symbolMoney;
     }
 
-    //System.out.println("Resultado: "+ String.format("%.2f",conversion) + "$ Pesos colombianos");
-
     public double getCantidadMoneyUser() {
         return cantidadMoneyUser;
     }
@@ -55,46 +57,83 @@ public class MenuContinentes {
         int decisionUser = 0;
         while (decisionUser != 5) {
             System.out.println(norteamerica);
-            decisionUser = teclado.nextInt();
-            switch (decisionUser) {
-                case 1:
-                    symbolMoney = "CAD";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares canadienses a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"dólares canadienses",conversion);
-                    break;
-                case 2:
-                    symbolMoney = "CAD";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CAD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"dólares canadienses");
-                    break;
-                case 3:
-                    symbolMoney = "MXN";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de pesos mexicanos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"pesos mexicanos",conversion);
-                    break;
-                case 4:
-                    symbolMoney = "MXN";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos mexicanos");
-                    break;
-                case 5:
-                    System.out.println("Regresando al menú principal...");
-                    break;
-                default:
-                    System.out.println("Opción no válida, intente de nuevo por favor.");
-                    break;
+            try{
+                decisionUser = teclado.nextInt();
+                switch (decisionUser) {
+                    case 1:
+                        while (true){
+                            symbolMoney = "CAD";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares canadienses a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser,"dólares canadienses",conversion);
+                                break;
+                            }catch (InputMismatchException e){
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        while (true) {
+                            symbolMoney = "CAD";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CAD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "dólares canadienses");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        while (true) {
+                            symbolMoney = "MXN";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos mexicanos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos mexicanos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true) {
+                            symbolMoney = "MXN";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (MXN): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos mexicanos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
+                        System.out.println("Regresando al menú principal...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida, intente de nuevo por favor.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Entrada no válida. Por favor ingrese un valor numérico.");
+                teclado.nextLine();
             }
         }
     }
@@ -116,78 +155,147 @@ public class MenuContinentes {
 
         while (decisionUser != 9) {
             System.out.println(centroamerica);
-            decisionUser = teclado.nextInt();
-            switch (decisionUser) {
-                case 1:
-                    symbolMoney = "GTQ";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de quetzales a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"quetzales",conversion);
-                    break;
-                case 2:
-                    symbolMoney = "GTQ";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GTQ): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"quetzales");
-                    break;
-                case 3:
-                    symbolMoney = "HNL";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de Lempiras a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"lempiras",conversion);
-                    break;
-                case 4:
-                    symbolMoney = "HNL";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HNL): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"lempiras");
-                    break;
-                case 5:
-                    symbolMoney = "NIO";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de Córdobas Nicaguarenses a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"córdobas nicaguarenses",conversion);
-                    break;
-                case 6:
-                    symbolMoney = "NIO";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NIO): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"córdobas nicaguarenses");
-                    break;
-                case 7:
-                    symbolMoney = "CRC";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de Colones Costaricenses a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"colones costaricenses",conversion);
-                    break;
-                case 8:
-                    symbolMoney = "CRC";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CRC): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"colones costaricenses");
-                    break;
-                case 9:
-                    System.out.println("Regresando al menú principal...");
-                    break;
-                default:
-                    System.out.println("Opción no válida, intente de nuevo por favor.");
-                    break;
+            try{
+                decisionUser = teclado.nextInt();
+                switch (decisionUser) {
+                    case 1:
+                        while (true) {
+                            symbolMoney = "GTQ";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de quetzales a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "quetzales", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        while (true) {
+                            symbolMoney = "GTQ";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GTQ): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "quetzales");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        while (true) {
+                            symbolMoney = "HNL";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de Lempiras a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "lempiras", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true) {
+                            symbolMoney = "HNL";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HNL): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "lempiras");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
+                        while (true) {
+                            symbolMoney = "NIO";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de Córdobas Nicaguarenses a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "córdobas nicaguarenses", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 6:
+                        while (true) {
+                            symbolMoney = "NIO";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NIO): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "córdobas nicaguarenses");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 7:
+                        while (true) {
+                            symbolMoney = "CRC";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de Colones Costaricenses a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "colones costaricenses", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 8:
+                        while (true) {
+                            symbolMoney = "CRC";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CRC): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "colones costaricenses");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 9:
+                        System.out.println("Regresando al menú principal...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida, intente de nuevo por favor.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Entrada no válida. Por favor ingrese un valor numérico.");
+                teclado.nextLine();
             }
         }
     }
@@ -215,126 +323,243 @@ public class MenuContinentes {
 
         while (decisionUser != 15) {
             System.out.println(sudamerica);
-            decisionUser = teclado.nextInt();
-            switch (decisionUser) {
-                case 1:
-                    symbolMoney = "COP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de pesos colombianos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"pesos colombianos",conversion);
-                    break;
-                case 2:
-                    symbolMoney = "COP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (COP): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos colombianos");
-                    break;
-                case 3:
-                    symbolMoney = "VES";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de Bolívares a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"bolivares",conversion);
-                    break;
-                case 4:
-                    symbolMoney = "VES";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (VES): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"bolivares");
-                    break;
-                case 5:
-                    symbolMoney = "PEN";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de soles peruanos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"soles peruanos",conversion);
-                    break;
-                case 6:
-                    symbolMoney = "PEN";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PEN): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"soles peruanos");
-                    break;
-                case 7:
-                    symbolMoney = "BOB";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de bolivianos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"bolivianos", conversion);
-                    break;
-                case 8:
-                    symbolMoney = "BOB";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (BOB): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"bolivianos");
-                    break;
-                case 9:
-                    symbolMoney = "PYG";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de guaraníes a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"guaraníes",conversion);
-                    break;
-                case 10:
-                    symbolMoney = "PYG";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PYG): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"guaraníes");
-                    break;
-                case 11:
-                    symbolMoney = "UYU";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de pesos uruguayos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"pesos uruguayos", conversion);
-                    break;
-                case 12:
-                    symbolMoney = "UYU";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UYU): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos uruguayos");
-                    break;
-                case 13:
-                    symbolMoney = "CLP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de pesos chilenos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"pesos chilenos",conversion);
-                    break;
-                case 14:
-                    symbolMoney = "CLP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CLP): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos chilenos");
-                    break;
-                case 15:
-                    System.out.println("Regresando al menú principal...");
-                    break;
-                default:
-                    System.out.println("Ingrese una opción válida.");
-                    break;
+            try{
+                decisionUser = teclado.nextInt();
+                switch (decisionUser) {
+                    case 1:
+                        while (true) {
+                            symbolMoney = "COP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos colombianos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos colombianos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        while (true) {
+                            symbolMoney = "COP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (COP): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos colombianos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        while (true) {
+                            symbolMoney = "VES";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de Bolívares a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "bolivares", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true) {
+                            symbolMoney = "VES";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (VES): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "bolivares");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
+                        while (true) {
+                            symbolMoney = "PEN";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de soles peruanos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "soles peruanos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 6:
+                        while (true) {
+                            symbolMoney = "PEN";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PEN): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "soles peruanos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 7:
+                        while (true) {
+                            symbolMoney = "BOB";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de bolivianos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "bolivianos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 8:
+                        while (true) {
+                            symbolMoney = "BOB";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (BOB): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "bolivianos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 9:
+                        while (true) {
+                            symbolMoney = "PYG";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de guaraníes a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "guaraníes", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 10:
+                        while (true) {
+                            symbolMoney = "PYG";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (PYG): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "guaraníes");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 11:
+                        while (true) {
+                            symbolMoney = "UYU";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos uruguayos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos uruguayos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 12:
+                        while (true) {
+                            symbolMoney = "UYU";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UYU): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos uruguayos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 13:
+                        while (true) {
+                            symbolMoney = "CLP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos chilenos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos chilenos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 14:
+                        while (true) {
+                            symbolMoney = "CLP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CLP): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos chilenos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 15:
+                        System.out.println("Regresando al menú principal...");
+                        break;
+                    default:
+                        System.out.println("Ingrese una opción válida.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Entrada no válida. Por favor ingrese un valor numérico.");
+                teclado.nextLine();
             }
         }
     }
@@ -356,78 +581,147 @@ public class MenuContinentes {
 
         while (decisionUser != 9) {
             System.out.println(caribe);
-            decisionUser = teclado.nextInt();
-            switch (decisionUser) {
-                case 1:
-                    symbolMoney = "CUP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de pesos cubanos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"pesos cubanos",conversion);
-                    break;
-                case 2:
-                    symbolMoney = "CUP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CUP): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos cubanos");
-                    break;
-                case 3:
-                    symbolMoney = "DOP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de pesos dominicanos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"pesos dominicanos",conversion);
-                    break;
-                case 4:
-                    symbolMoney = "DOP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (DOP): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"pesos dominicanos");
-                    break;
-                case 5:
-                    symbolMoney = "HTG";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de gourdes a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"gourdes",conversion);
-                    break;
-                case 6:
-                    symbolMoney = "HTG";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HTG): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"gourdes");
-                    break;
-                case 7:
-                    symbolMoney = "JMD";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares jamaiquinos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"dólares jamaiquinos",conversion);
-                    break;
-                case 8:
-                    symbolMoney = "JMD";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (JMD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"dólares jamaiquinos");
-                    break;
-                case 9:
-                    System.out.println("Regresando al menú principal...");
-                    break;
-                default:
-                    System.out.println("Ingrese una opción válida.");
-                    break;
+            try {
+                decisionUser = teclado.nextInt();
+                switch (decisionUser) {
+                    case 1:
+                        while (true) {
+                            symbolMoney = "CUP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos cubanos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos cubanos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        while (true) {
+                            symbolMoney = "CUP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CUP): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos cubanos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        while (true) {
+                            symbolMoney = "DOP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos dominicanos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos dominicanos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true) {
+                            symbolMoney = "DOP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (DOP): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos dominicanos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
+                        while (true) {
+                            symbolMoney = "HTG";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de gourdes a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "gourdes", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 6:
+                        while (true) {
+                            symbolMoney = "HTG";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (HTG): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "gourdes");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 7:
+                        while (true) {
+                            symbolMoney = "JMD";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares jamaiquinos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "dólares jamaiquinos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 8:
+                        while (true) {
+                            symbolMoney = "JMD";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (JMD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "dólares jamaiquinos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 9:
+                        System.out.println("Regresando al menú principal...");
+                        break;
+                    default:
+                        System.out.println("Ingrese una opción válida.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Entrada no válida. Por favor ingrese un valor numérico.");
+                teclado.nextLine();
             }
         }
     }
@@ -456,137 +750,254 @@ public class MenuContinentes {
 
         while (decisionUser != 16) {
             System.out.println(europa);
-            decisionUser = teclado.nextInt();
-            switch (decisionUser) {
-                case 1:
-                    ArrayList<String> paisesEuro = new ArrayList<>();
-                    Collections.addAll(paisesEuro, "Alemania","Francia","España","Italia","Portugal",
-                                                "Bélgica","Países Bajos","Austria","Finlandia","Irlanda","Luxemburgo",
-                                                "Grecia","Eslovaquia","Eslovenia","Estonia","Letonia","Lituania","Chipre","Malta");
-                    Collections.sort(paisesEuro);
-                    System.out.println("Los países europeos que utilizan la moneda (Euro) son:");
-                    for(String pais : paisesEuro){
-                        System.out.println(pais);
-                    }
-                    break;
-                case 2:
-                    symbolMoney = "EUR";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de Euros a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"Euros",conversion);
-                    break;
-                case 3:
-                    symbolMoney = "EUR";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (EUR): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"Euros");
-                    break;
-                case 4:
-                    symbolMoney = "GBP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de libras esterlinas a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"libras esterlinas",conversion);
-                    break;
-                case 5:
-                    symbolMoney = "GBP";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GBP): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"libras esterlinas");
-                    break;
-                case 6:
-                    symbolMoney = "CHF";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de francos suizos a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"francos suizos",conversion);
-                    break;
-                case 7:
-                    symbolMoney = "CHF";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CHF): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"francos suizos");
-                    break;
-                case 8:
-                    symbolMoney = "NOK";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de coronas noruegas a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"coronas noruegas",conversion);
-                    break;
-                case 9:
-                    symbolMoney = "NOK";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NOK): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"coronas noruegas");
-                    break;
-                case 10:
-                    symbolMoney = "UAH";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de grivnas a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"grivnas",conversion);
-                    break;
-                case 11:
-                    symbolMoney = "UAH";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UAH): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"grivnas");
-                    break;
-                case 12:
-                    symbolMoney = "ISK";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de coronas irlandesas a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"coronas irlandesas",conversion);
-                    break;
-                case 13:
-                    symbolMoney = "ISK";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (ISK): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"coronas irlandesas");
-                    break;
-                case 14:
-                    symbolMoney = "RSD";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dinares serbios a convertir a (USD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.convertirMonedaADolar(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoUsd(cantidadMoneyUser,"dinares serbios",conversion);
-                    break;
-                case 15:
-                    symbolMoney = "RSD";
-                    tasaDeCambio = consulta.buscaMoneda(symbolMoney);
-                    System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (RSD): ");
-                    cantidadMoneyUser = teclado.nextDouble();
-                    conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser,tasaDeCambio);
-                    mensajeResultadoMoneda(cantidadMoneyUser,conversion,"dinares serbios");
-                    break;
-                case 16:
-                    System.out.println("Regresando al menú principal...");
-                    break;
-                default:
-                    System.out.println("Ingrese una opción válida.");
-                    break;
+            try{
+                decisionUser = teclado.nextInt();
+                switch (decisionUser) {
+                    case 1:
+                        ArrayList<String> paisesEuro = new ArrayList<>();
+                        Collections.addAll(paisesEuro, "Alemania","Francia","España","Italia","Portugal",
+                                "Bélgica","Países Bajos","Austria","Finlandia","Irlanda","Luxemburgo",
+                                "Grecia","Eslovaquia","Eslovenia","Estonia","Letonia","Lituania","Chipre","Malta");
+                        Collections.sort(paisesEuro);
+                        System.out.println("Los países europeos que utilizan la moneda (Euro) son: ");
+                        for(String pais : paisesEuro){
+                            System.out.println(pais);
+                        }
+                        break;
+                    case 2:
+                        while (true) {
+                            symbolMoney = "EUR";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de Euros a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "Euros", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        while (true) {
+                            symbolMoney = "EUR";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (EUR): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "Euros");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true) {
+                            symbolMoney = "GBP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de libras esterlinas a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "libras esterlinas", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
+                        while (true) {
+                            symbolMoney = "GBP";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (GBP): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "libras esterlinas");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 6:
+                        while (true) {
+                            symbolMoney = "CHF";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de francos suizos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "francos suizos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 7:
+                        while (true) {
+                            symbolMoney = "CHF";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (CHF): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "francos suizos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 8:
+                        while (true) {
+                            symbolMoney = "NOK";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de coronas noruegas a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "coronas noruegas", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 9:
+                        while (true) {
+                            symbolMoney = "NOK";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (NOK): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "coronas noruegas");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 10:
+                        while (true) {
+                            symbolMoney = "UAH";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de grivnas a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "grivnas", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 11:
+                        while (true) {
+                            symbolMoney = "UAH";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (UAH): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "grivnas");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 12:
+                        while (true) {
+                            symbolMoney = "ISK";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de coronas irlandesas a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "coronas irlandesas", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 13:
+                        while (true) {
+                            symbolMoney = "ISK";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (ISK): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "coronas irlandesas");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 14:
+                        while (true) {
+                            symbolMoney = "RSD";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dinares serbios a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "dinares serbios", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 15:
+                        while (true) {
+                            symbolMoney = "RSD";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (RSD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "dinares serbios");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 16:
+                        System.out.println("Regresando al menú principal...");
+                        break;
+                    default:
+                        System.out.println("Ingrese una opción válida.");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Entrada no válida. Por favor ingrese un valor numérico.");
+                teclado.nextLine();
             }
         }
     }
