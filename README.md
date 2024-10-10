@@ -2,6 +2,8 @@
 
 ![Portada de project conversor moneda](https://github.com/user-attachments/assets/0e9558d2-0cac-4132-bcaa-911ac8699f50)
 
+<img alt="Static Badge" src="https://img.shields.io/badge/release%20date%2Foctober%202024%2Fgreen">
+
 El presente proyecto 
 
 
