@@ -6,7 +6,7 @@
 </p>
 
 <p>Proyecto en desarrollo para facilitar la actividad de conversión de monedas internacionales a USD o viceversa.</p>
-<p align="justify">El sistema permitirá realizar conversiones de monedas internacionales a USD o viceversa, permitiendo también un número infinito de consultas y también visualizar tú historial de conversiones durante la sesión, como también generar tú propio archivo JSON con el historial de conversiones realizadas, para que no las pierdas y puedas tranquilamente viajar conociendo la tasa de cambio de tú moneda con respecto a el USD.</p>
+<p align="justify">El sistema permitirá realizar conversiones de monedas internacionales a USD o inversamente, permitiendo también un número infinito de consultas y también visualizar tú historial de conversiones durante la sesión, como también generar tú propio archivo JSON con el historial de conversiones realizadas, para que no las pierdas y puedas tranquilamente viajar conociendo la tasa de cambio de tú moneda con respecto a el USD.</p>
 
 ## 🔨Funcionalidades del proyecto:
 - `Funcionalidad 1`: Conexión a la API (Open exchange rates) para obtener tasas de cambio actualizadas.
