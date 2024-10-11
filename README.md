@@ -15,7 +15,6 @@
 - `Funcionalidad 4`: Adquirir archivo JSON si deseas con el historial de conversiones realizadas durante la sesión al cerrar el programa.
 
 🧠 Tecnologías utilizadas: 
-<hr>
 - Java 22.0.2 (100%)
 <hr>
 ## Autor:
