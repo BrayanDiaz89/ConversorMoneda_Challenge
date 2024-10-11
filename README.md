@@ -14,7 +14,7 @@
 - `Funcionalidad 3`: Posibilidad de almacenar historial de conversiones y visualizarlo durante la sesión.
 - `Funcionalidad 4`: Adquirir archivo JSON si deseas con el historial de conversiones realizadas durante la sesión al cerrar el programa.
 
-🧠 Tecnologías utilizadas: 
+## 🧠 Tecnologías utilizadas: 
 - Java 22.0.2 (100%)
 <hr>
 ## Autor:
