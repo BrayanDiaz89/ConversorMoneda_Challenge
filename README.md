@@ -22,14 +22,14 @@
 ![Tutorial de descarga](https://github.com/user-attachments/assets/47880697-7c99-4129-9c79-e8e1d007c3e6)
 <p>Dale click en <strong color="red">Download ZIP</strong></p>
 <p>Posteriormente asegurate de tener instalado un editor de código, preferiblemente IntelliJ, desde allí: </p>
-![Tutorial de descarga](https://github.com/user-attachments/assets/42c723ea-f0e4-41c5-b3b6-37019d5b089c)
+![Tutorial de descarga1](https://github.com/user-attachments/assets/42c723ea-f0e4-41c5-b3b6-37019d5b089c)
 <p align="justify">Dale click en el menú, para posteriormente darle en Open File, y abre la carpeta descomprimida, una vez lo realices, podrás ejecutar desde la clase main el programa:  
-![Tutorial de descarga](https://github.com/user-attachments/assets/08e06683-8e70-4cbe-bcb2-db622a607a85)
+![Tutorial de descarga2](https://github.com/user-attachments/assets/08e06683-8e70-4cbe-bcb2-db622a607a85)
 Una vez ejecutado, podrás darle uso al programa desde la parte inferior del editor de código (Consola).
-![Tutorial de descarga](https://github.com/user-attachments/assets/347634d1-6117-400d-82e0-e9ba5e38d930)
+![Tutorial de descarga3](https://github.com/user-attachments/assets/347634d1-6117-400d-82e0-e9ba5e38d930)
 </p>
 <p align="justify">Si al finalizar su uso deseas generar tú archivo JSON con tú historial de conversiones, se guardará en estos mismos directorios, a continuación, señalaré el archivo JSON que se crea: 
-![tutorial1 3](https://github.com/user-attachments/assets/0f382367-94cd-4cee-9d76-c03836aa1963)
+![tutorial4](https://github.com/user-attachments/assets/0f382367-94cd-4cee-9d76-c03836aa1963)
 </p>
 
 ## Autor:
