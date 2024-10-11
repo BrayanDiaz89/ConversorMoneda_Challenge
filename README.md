@@ -9,5 +9,8 @@
 <p align="justify">El sistema permitirá realizar conversiones de monedas internacionales a USD o viceversa, permitiendo también un número infinito de consultas y también visualizar tú historial de conversiones durante la sesión, como también generar tú propio archivo JSON con el historial de conversiones realizadas, para que no las pierdas y puedas ir tranquilamente viajar conociendo la tasa de cambio de tú moneda con respecto a el USD.</p>
 
 ## 🔨Funcionalidades del proyecto:
-- `Funcionalidad 1`: Descripción de la funcionalidad 1. `Funcionalidad 2`: descripción de la funcionalidad 2- `Funcionalidad 2a`: descripción de la funcionalidade 2a relacionada con la funcionalidad 2- `Funcionalidad 3`: descripción de la funcionalidad 3
+- `Funcionalidad 1`: Conexión a la API (Open exchange rates) para obtener tasas de cambio actualizadas.
+- `Funcionalidad 2`: Conversión de monedas en países: (Norteamérica, Centroamérica, Sudamérica, El Caribe, Algunos países de Europa) a USD o viceversa.
+- `Funcionalidad 3`: Posibilidad de almacenar historial de conversiones y visualizarlo durante la sesión.
+- `Funcionalidad 4`: Adquirir archivo JSON si deseas con el historial de conversiones realizadas durante la sesión al cerrar el programa.
 
