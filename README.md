@@ -44,7 +44,9 @@
 | :---: |
 
 <hr>
+
 ## 🥇 Créditos:
+
 <p align="jutify"> Gracias a <strong src="https://www.aluracursos.com/">Alura LATAM,</strong> y a <strong src="https://www.oracle.com/co/education/oracle-next-education/">Oracle Next Education</strong> por la linda oportunidad, reto aceptado y concretado!!.</p>
 
 
