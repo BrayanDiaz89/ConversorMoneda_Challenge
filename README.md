@@ -22,15 +22,19 @@
 ![Tutorial de descarga](https://github.com/user-attachments/assets/47880697-7c99-4129-9c79-e8e1d007c3e6)
 <p>Dale click en <strong color="red">Download ZIP</strong></p>
 <p>Posteriormente asegurate de tener instalado un editor de código, preferiblemente IntelliJ, desde allí: </p>
-![Tutorial de descarga1](https://github.com/user-attachments/assets/42c723ea-f0e4-41c5-b3b6-37019d5b089c)
-<p align="justify">Dale click en el menú, para posteriormente darle en Open File, y abre la carpeta descomprimida, una vez lo realices, podrás ejecutar desde la clase main el programa:  
-![Tutorial de descarga2](https://github.com/user-attachments/assets/08e06683-8e70-4cbe-bcb2-db622a607a85)
-Una vez ejecutado, podrás darle uso al programa desde la parte inferior del editor de código (Consola).
-![Tutorial de descarga3](https://github.com/user-attachments/assets/347634d1-6117-400d-82e0-e9ba5e38d930)
-</p>
-<p align="justify">Si al finalizar su uso deseas generar tú archivo JSON con tú historial de conversiones, se guardará en estos mismos directorios, a continuación, señalaré el archivo JSON que se crea: 
-![tutorial4](https://github.com/user-attachments/assets/0f382367-94cd-4cee-9d76-c03836aa1963)
-</p>
+![tutorial de descarga1](https://github.com/user-attachments/assets/c1ca8908-2f2d-4373-ad8a-2eb4ff15cb9b)
+
+<p align="justify">Dale click en el menú, para posteriormente darle en Open File, y abre la carpeta descomprimida, una vez lo realices, podrás ejecutar desde la clase main el programa:  </p>
+![tutorial de descarga2](https://github.com/user-attachments/assets/0b5cf7cf-964c-41ab-8c17-064a05f9fe31)
+<p>
+Una vez ejecutado, podrás darle uso al programa desde la parte inferior del editor de código (Consola).</p>
+![tutorial de descarga3](https://github.com/user-attachments/assets/5239f4e7-18b7-4be7-a761-dc6ba333b8d5)
+
+
+<p align="justify">Si al finalizar su uso deseas generar tú archivo JSON con tú historial de conversiones, se guardará en estos mismos directorios, a continuación, señalaré el archivo JSON que se crea: </p>
+
+![tutorial4](https://github.com/user-attachments/assets/6f919c47-74a3-4a2c-a964-e9bbd13ced76)
+
 
 ## Autor:
 
