@@ -10,7 +10,14 @@
 
 ## 🔨Funcionalidades del proyecto:
 - `Funcionalidad 1`: Conexión a la API (Open exchange rates) para obtener tasas de cambio actualizadas.
-- `Funcionalidad 2`: Conversión de monedas en países: (Norteamérica, Centroamérica, Sudamérica, El Caribe, Algunos países de Europa) a USD o viceversa.
+- `Funcionalidad 2`: Conversión de monedas en países de: (Norteamérica, Centroamérica, Sudamérica, El Caribe, Algunos países de Europa) a USD o viceversa.
 - `Funcionalidad 3`: Posibilidad de almacenar historial de conversiones y visualizarlo durante la sesión.
 - `Funcionalidad 4`: Adquirir archivo JSON si deseas con el historial de conversiones realizadas durante la sesión al cerrar el programa.
 
+🧠 Tecnologías utilizadas: 
+<hr>
+- Java 22.0.2 (100%)
+<hr>
+## Autor:
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Brayan Díaz</sub>](https://github.com/BrayanDiaz89) |
+| :---: | :---: | :---: | 
