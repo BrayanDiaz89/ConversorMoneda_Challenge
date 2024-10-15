@@ -303,30 +303,98 @@ public class MenuContinentes {
     public void menuSudamerica() {
         String sudamerica = "Estás en Sudamérica:  \n" +
                 "¿Qué operación deseas realizar?\n" +
-                "1) (Colombia-cop) Convertir pesos colombianos a dólares estadounidenses.\n" +
-                "2) (Colombia-cop) Convertir dólares estadounidenses a pesos colombianos.\n" +
-                "3) (Venezuela-ves) Convertir Bolívares a dólares estadounidenses.\n" +
-                "4) (Venezuela-ves) Convertir dólares estadounidenses a Bolívares.\n" +
-                "5) (Peru-pen) Convertir Soles Peruanos a dólares estadounidenses.\n" +
-                "6) (Peru-pen) Convertir dólares estadounidenses a Soles Peruanos.\n" +
-                "7) (Bolivia-bob) Convertir Bolivianos a dólares estadounidenses.\n" +
-                "8) (Bolivia-bob) Convertir dólares estadounidenses a Bolivianos.\n" +
-                "9) (Paraguay-pyg) Convertir Guaraníes a dólares estadounidenses.\n" +
-                "10) (Paraguay-pyg) Convertir dólares estadounidenses a Guaraníes.\n" +
-                "11) (Uruguay-uyu) Convertir Pesos Uruguayos a dólares estadounidenses.\n" +
-                "12) (Uruguay-uyu) Convertir dólares estadounidenses a Pesos Uruguayos.\n" +
-                "13) (Chile-clp) Convertir Pesos Chilenos a dólares estadounidenses.\n" +
-                "14) (Chile-clp) Convertir dólares estadounidenses a Pesos Chilenos.\n" +
-                "15) Volver al menú principal.\n";
+                "1) (Argentina-ars) Convertir pesos argentinos a dólares estadounidenses.\n" +
+                "2) (Argentina-ars) Convertir dólares estadounidenses a pesos argentinos.\n" +
+                "3) (Brasil-brl) Convertir reales brasileños a dólares estadounidenses.\n" +
+                "4) (Brasil-brl) Convertir dólares estadounidenses a reales brasileños.\n" +
+                "5) (Colombia-cop) Convertir pesos colombianos a dólares estadounidenses.\n" +
+                "6) (Colombia-cop) Convertir dólares estadounidenses a pesos colombianos.\n" +
+                "7) (Venezuela-ves) Convertir Bolívares a dólares estadounidenses.\n" +
+                "8) (Venezuela-ves) Convertir dólares estadounidenses a Bolívares.\n" +
+                "9) (Peru-pen) Convertir Soles Peruanos a dólares estadounidenses.\n" +
+                "10) (Peru-pen) Convertir dólares estadounidenses a Soles Peruanos.\n" +
+                "11) (Bolivia-bob) Convertir Bolivianos a dólares estadounidenses.\n" +
+                "12) (Bolivia-bob) Convertir dólares estadounidenses a Bolivianos.\n" +
+                "13) (Paraguay-pyg) Convertir Guaraníes a dólares estadounidenses.\n" +
+                "14) (Paraguay-pyg) Convertir dólares estadounidenses a Guaraníes.\n" +
+                "15) (Uruguay-uyu) Convertir Pesos Uruguayos a dólares estadounidenses.\n" +
+                "16) (Uruguay-uyu) Convertir dólares estadounidenses a Pesos Uruguayos.\n" +
+                "17) (Chile-clp) Convertir Pesos Chilenos a dólares estadounidenses.\n" +
+                "18) (Chile-clp) Convertir dólares estadounidenses a Pesos Chilenos.\n" +
+                "19) Volver al menú principal.\n";
 
         int decisionUser = 0;
 
-        while (decisionUser != 15) {
+        while (decisionUser != 19) {
             System.out.println(sudamerica);
             try{
                 decisionUser = teclado.nextInt();
                 switch (decisionUser) {
                     case 1:
+                        while (true) {
+                            symbolMoney = "ARS";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de pesos argentinos a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "pesos argentinos", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        while (true) {
+                            symbolMoney = "ARS";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (ARS): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "pesos argentinos");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        while (true) {
+                            symbolMoney = "BRL";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de reales brasileños a convertir a (USD): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.convertirMonedaADolar(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoUsd(cantidadMoneyUser, "reales brasileños", conversion);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true) {
+                            symbolMoney = "BRL";
+                            tasaDeCambio = consulta.buscaMoneda(symbolMoney);
+                            System.out.println("Digite la cantidad de dólares estadounidenses a convertir a (BRL): ");
+                            try {
+                                cantidadMoneyUser = teclado.nextDouble();
+                                conversion = conversor.conversionDolarAMoneda(cantidadMoneyUser, tasaDeCambio);
+                                mensajeResultadoMoneda(cantidadMoneyUser, conversion, "reales brasileños");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada no válida. Por favor ingresa un valor numérico (En caso de separar utilizar la ,)");
+                                teclado.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
                         while (true) {
                             symbolMoney = "COP";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -342,7 +410,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 2:
+                    case 6:
                         while (true) {
                             symbolMoney = "COP";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -358,7 +426,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 3:
+                    case 7:
                         while (true) {
                             symbolMoney = "VES";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -374,7 +442,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 4:
+                    case 8:
                         while (true) {
                             symbolMoney = "VES";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -390,7 +458,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 5:
+                    case 9:
                         while (true) {
                             symbolMoney = "PEN";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -406,7 +474,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 6:
+                    case 10:
                         while (true) {
                             symbolMoney = "PEN";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -422,7 +490,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 7:
+                    case 11:
                         while (true) {
                             symbolMoney = "BOB";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -438,7 +506,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 8:
+                    case 12:
                         while (true) {
                             symbolMoney = "BOB";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -454,7 +522,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 9:
+                    case 13:
                         while (true) {
                             symbolMoney = "PYG";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -470,7 +538,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 10:
+                    case 14:
                         while (true) {
                             symbolMoney = "PYG";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -486,7 +554,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 11:
+                    case 15:
                         while (true) {
                             symbolMoney = "UYU";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -502,7 +570,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 12:
+                    case 16:
                         while (true) {
                             symbolMoney = "UYU";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -518,7 +586,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 13:
+                    case 17:
                         while (true) {
                             symbolMoney = "CLP";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -534,7 +602,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 14:
+                    case 18:
                         while (true) {
                             symbolMoney = "CLP";
                             tasaDeCambio = consulta.buscaMoneda(symbolMoney);
@@ -550,7 +618,7 @@ public class MenuContinentes {
                             }
                         }
                         break;
-                    case 15:
+                    case 19:
                         System.out.println("Regresando al menú principal...");
                         break;
                     default:
